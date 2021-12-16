@@ -44,13 +44,20 @@ class _SecondScreenState extends State<SecondScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     InkWell(
-                      onTap: saveOption,
+                        onTap: saveOption,
                         child: Container(
-                            color: Colors.blue,
-                            width: 75,
-                            height: 75,
-                            child: Text(
-                                "Другий скрін: " + data.oldCount.toString()))),
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(1000)),
+                            ),
+                            width: 175,
+                            height: 175,
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                  "Другий скрін: " + data.oldCount.toString()),
+                            ))),
                   ],
                 ),
                 Row(
@@ -75,13 +82,13 @@ class _SecondScreenState extends State<SecondScreen> {
       ),
     );
   }
-  saveOption(){
-    setState(() {
-      data.leftDown=0;
-      data.leftUp=0;
-      data.rightUp=0;
-      data.rightDown=0;
 
+  saveOption() {
+    setState(() {
+      data.leftDown = 0;
+      data.leftUp = 0;
+      data.rightUp = 0;
+      data.rightDown = 0;
     });
   }
 }

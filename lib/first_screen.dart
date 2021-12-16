@@ -54,11 +54,18 @@ class _FirsScreenState extends State<FirsScreen> {
                         );
                       },
                       child: Container(
-                          color: Colors.blue,
-                          width: 75,
-                          height: 75,
-                          child: Text(
-                              "Перший скрін: " + data.oldCount.toString()))),
+                          decoration: BoxDecoration(
+                            color: Colors.blue,
+                            borderRadius: const BorderRadius.all(Radius.circular(1000)),
+                          ),
+
+                          width: 175,
+                          height: 175,
+                          child: Align(
+                            alignment:Alignment.center,
+                            child: Text(
+                                "Перший скрін: " + data.oldCount.toString()),
+                          ))),
                 ],
               ),
               Row(
@@ -90,13 +97,22 @@ class _FirsScreenState extends State<FirsScreen> {
   firstCount() {
 
     setState(() {
-    
+data.totalCount+=1;
+if(data.totalCount==4){
+  data.leftUpActive=true;
+}
+
       data.leftUp++;
       data.oldCount +=1;
     });
   }
 
   secondCount() {
+    data.totalCount+=1;
+    if(data.totalCount==4){
+      data.rightUpActive=true;
+    }
+
     setState(() {
       data.rightUp++;
       data.oldCount +=1;
@@ -104,6 +120,11 @@ class _FirsScreenState extends State<FirsScreen> {
   }
 
   threeCount() {
+    data.totalCount+=1;
+    if(data.totalCount==4){
+      data.leftDownActive=true;
+    }
+
     setState(() {
       data.leftDown++;
       data.oldCount += 1 ;
@@ -111,6 +132,11 @@ class _FirsScreenState extends State<FirsScreen> {
   }
 
   fourCount() {
+    data.totalCount+=1;
+    if(data.totalCount==4){
+      data.rightDownActive=true;
+    }
+
     setState(() {
       data.rightDown++;
       data.oldCount +=1 ;
