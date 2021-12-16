@@ -14,7 +14,7 @@ class _SecondScreenState extends State<SecondScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Screen"),
+        title: const Text("Second Screen"),
       ),
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -46,10 +46,10 @@ class _SecondScreenState extends State<SecondScreen> {
                     InkWell(
                         onTap: saveOption,
                         child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.blue,
                               borderRadius:
-                                  const BorderRadius.all(Radius.circular(1000)),
+                                  BorderRadius.all(Radius.circular(1000)),
                             ),
                             width: 175,
                             height: 175,
@@ -85,6 +85,10 @@ class _SecondScreenState extends State<SecondScreen> {
 
   saveOption() {
     setState(() {
+      data.leftUpActive = false;
+      data.rightUpActive = false;
+      data.leftDownActive = false;
+      data.rightDownActive = false;
       data.leftDown = 0;
       data.leftUp = 0;
       data.rightUp = 0;

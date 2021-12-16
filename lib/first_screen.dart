@@ -14,6 +14,7 @@ class FirsScreen extends StatefulWidget {
 class _FirsScreenState extends State<FirsScreen> {
   @override
   Widget build(BuildContext context) {
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -27,16 +28,16 @@ class _FirsScreenState extends State<FirsScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   InkWell(
-                      onTap: firstCount,
+                      onTap:(data.leftUpActive) ?  nothing:firstCount,
                       child: Container(
-                        color: Colors.blue,
+                        color:(data.leftUpActive)? Colors.grey:Colors.blue,
                         width: 75,
                         height: 75,
                       )),
                   InkWell(
-                      onTap: secondCount,
+                      onTap:(data.rightUpActive)?  nothing:secondCount,
                       child: Container(
-                        color: Colors.blue,
+                        color:(data.rightUpActive)? Colors.grey:Colors.blue,
                         width: 75,
                         height: 75,
                       )),
@@ -54,15 +55,15 @@ class _FirsScreenState extends State<FirsScreen> {
                         );
                       },
                       child: Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.blue,
-                            borderRadius: const BorderRadius.all(Radius.circular(1000)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(1000)),
                           ),
-
                           width: 175,
                           height: 175,
                           child: Align(
-                            alignment:Alignment.center,
+                            alignment: Alignment.center,
                             child: Text(
                                 "Перший скрін: " + data.oldCount.toString()),
                           ))),
@@ -72,16 +73,16 @@ class _FirsScreenState extends State<FirsScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   InkWell(
-                      onTap: threeCount,
+                      onTap: (data.leftDownActive)?nothing:threeCount,
                       child: Container(
-                        color: Colors.blue,
+                        color:(data.leftDownActive)? Colors.grey:Colors.blue,
                         width: 75,
                         height: 75,
                       )),
                   InkWell(
-                      onTap: fourCount,
+                      onTap: (data.rightDownActive)?nothing:fourCount,
                       child: Container(
-                        color: Colors.blue,
+                        color:(data.rightDownActive)? Colors.grey:Colors.blue,
                         width: 75,
                         height: 75,
                       )),
@@ -93,53 +94,73 @@ class _FirsScreenState extends State<FirsScreen> {
       ],
     );
   }
-
-  firstCount() {
-
+nothing(){
     setState(() {
-data.totalCount+=1;
-if(data.totalCount==4){
-  data.leftUpActive=true;
+
+    });
 }
+  firstCount() {
+    setState(() {
+      data.totalCount += 1;
+      if (data.totalCount == 4) {
+
+        data.totalCount=0;
+        data.leftUpActive = true;
+        data.rightUpActive = false;
+        data.leftDownActive = false;
+        data.rightDownActive = false;
+      }
 
       data.leftUp++;
-      data.oldCount +=1;
+      data.oldCount += 1;
     });
   }
 
   secondCount() {
-    data.totalCount+=1;
-    if(data.totalCount==4){
-      data.rightUpActive=true;
+    data.totalCount += 1;
+    if (data.totalCount == 4) {
+      data.totalCount=0;
+      data.leftUpActive = false;
+      data.rightUpActive = true;
+      data.leftDownActive = false;
+      data.rightDownActive = false;
     }
 
     setState(() {
       data.rightUp++;
-      data.oldCount +=1;
+      data.oldCount += 1;
     });
   }
 
   threeCount() {
-    data.totalCount+=1;
-    if(data.totalCount==4){
-      data.leftDownActive=true;
+    data.totalCount += 1;
+    if (data.totalCount == 4) {
+      data.totalCount=0;
+      data.leftUpActive = false;
+      data.rightUpActive = false;
+      data.leftDownActive = true;
+      data.rightDownActive = false;
     }
 
     setState(() {
       data.leftDown++;
-      data.oldCount += 1 ;
+      data.oldCount += 1;
     });
   }
 
   fourCount() {
-    data.totalCount+=1;
-    if(data.totalCount==4){
-      data.rightDownActive=true;
+    data.totalCount += 1;
+    if (data.totalCount == 4) {
+      data.totalCount=0;
+      data.leftUpActive = false;
+      data.rightUpActive = false;
+      data.leftDownActive = false;
+      data.rightDownActive = true;
     }
 
     setState(() {
       data.rightDown++;
-      data.oldCount +=1 ;
+      data.oldCount += 1;
     });
   }
 }

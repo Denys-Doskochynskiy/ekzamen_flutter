@@ -25,4 +25,4 @@ class CounterData {
 }
 
 CounterData data =
-    CounterData(leftUp: 0, leftDown: 0, rightDown: 0, rightUp: 0,totalCount: 0,oldCount: 0);
+    CounterData(leftUp: 0, leftDown: 0, rightDown: 0, rightUp: 0,oldCount: 0);
